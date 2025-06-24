@@ -55,13 +55,7 @@ class Yandex_Map_Field extends acf_field {
 
 	function render_field_settings($field) {
 		acf_render_field_setting($field, [
-			'label' => __('Yandex Maps API Key', 'yandex-map-for-acf'),
-			'instructions' => __('Get your API key from Yandex Developer Console', 'yandex-map-for-acf'),
-			'type' => 'text',
-			'name' => 'api_key',
-		]);
 
-		acf_render_field_setting($field, [
 			'label' => __('Height', 'yandex-map-for-acf'),
 			'instructions' => __('Map height in pixels', 'yandex-map-for-acf'),
 			'type' => 'number',
