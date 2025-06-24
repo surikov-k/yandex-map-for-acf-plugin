@@ -42,3 +42,26 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), function($links) 
 // Settings page
 require_once YANDEX_MAP_FOR_ACF_PATH . 'includes/class-yandex-map-settings.php';
 new Yandex_Map_Settings();
+
+function get_yandex_language_code(): string {
+	$wp_lang = get_locale();
+	$lang = explode('_', $wp_lang)[0]; // Get base language
+
+	$language_map = [
+		'en' => 'en_US',  // English
+		'ru' => 'ru_RU',  // Russian
+		'uk' => 'uk_UA',  // Ukrainian
+		'tr' => 'tr_TR',  // Turkish
+		'de' => 'de_DE',  // German
+		'fr' => 'fr_FR',  // French
+		'it' => 'it_IT',  // Italian
+		'es' => 'es_ES',  // Spanish
+		'pt' => 'pt_PT',  // Portuguese
+		'be' => 'be_BY',  // Belarusian
+		'kk' => 'kk_KZ',  // Kazakh
+		'uz' => 'uz_UZ',  // Uzbek
+		// Add more as needed
+	];
+
+	return $language_map[$lang] ?? 'en_US';
+}

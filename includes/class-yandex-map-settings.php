@@ -60,7 +60,13 @@ class Yandex_Map_Settings {
 	}
 
 	public function render_section_info() {
-		echo '<p>Enter your Yandex Maps API settings below:</p>';
+		$current_lang = get_yandex_language_code();
+		echo '<p>' . sprintf(
+				__('Current map language: %s (based on WordPress language: %s)', 'yandex-map-for-acf'),
+				strtoupper(str_replace('_', '-', $current_lang)),
+				get_locale()
+			) . '</p>';
+		echo '<p>' . __('Enter your Yandex Maps API settings below:', 'yandex-map-for-acf') . '</p>';
 	}
 
 	public function render_api_key_field() {
@@ -78,4 +84,6 @@ class Yandex_Map_Settings {
 			echo '</p></div>';
 		}
 	}
+
+
 }

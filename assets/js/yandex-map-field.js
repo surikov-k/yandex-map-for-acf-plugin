@@ -1,8 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof ymaps === 'undefined') {
     console.error('Yandex Maps API not loaded');
+    const lang = yandex_map_vars?.language || 'en_US';
+    const errorMsg = lang.startsWith('ru') ?
+      'Карта не загружена. Пожалуйста, проверьте API ключ.' :
+      'Map failed to load. Please check your API key.';
+
     document.querySelectorAll('.yandex-map-field').forEach(field => {
-      field.innerHTML = '<div class="map-error">Map failed to load. Please check your API key.</div>';
+      field.innerHTML = `<div class="map-error">${errorMsg}</div>`;
     });
     return;
   }
